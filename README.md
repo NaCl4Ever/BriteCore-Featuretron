@@ -10,3 +10,10 @@ Run the following from within the project directory
 npm install 
 bower install 
 ```
+At this point you should everything prepared to run the application locally
+so to test that the install ran properly we can then run
+```
+node app.js
+```
+This will start our app listening on port 8080. Next navigate your browser to 
+localhost:8080. If we've done everything correct we should be greeted by the homepage Featr. 
