@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Featr</title>
+
+
+ <% include ../partials/header %>
+</head>
+<body>
+
+ <% include ../partials/nav %>
+ <div id="main">
+	<ul data-bind="foreach: requests">
+    <li>
+        <span data-bind="text: name"></span>
+        <span data-bind="text: status"></span>
+    </li>
+</ul>
+</div>
+
+
+</body>
+</html>

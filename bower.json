@@ -1,0 +1,23 @@
+{
+  "name": "brite-core-featuretron",
+  "description": "Feature requests for internal clients",
+  "main": "app.js",
+  "authors": [
+    "Jordan A Pectyo"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/NaCl4Ever/BriteCore-Featuretron",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.1.0"
+  }
+}
