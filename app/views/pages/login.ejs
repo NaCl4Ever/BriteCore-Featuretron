@@ -10,19 +10,57 @@
 <div class = "container-fluid">
 	<div class = "row">
 		<div class = "central-box login col-xs-8 col-xs-offset-4 col-md-6 col-md-offset-3">
+			<h1 id = "warning">You have entered the incorrect information, try agian.</h1>
 			<form>
 			  <div class="form-group">
-			    <label for="InputEmail">Email address</label>
-			    <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+			    <label  class="label label-info" for="InputEmail">Email address</label>
+			    <input type="email" class="form-control required" id="InputEmail" placeholder="Email">
 			  </div>
 			  <div class="form-group">
-			    <label for="InputPass">Password</label>
-			    <input type="password" class="form-control" id="InputPass" placeholder="Password">
+			    <label class="label label-info" for="InputPass">Password</label>
+			    <input type="password" class="form-control required" id="InputPass" placeholder="Password">
 			  </div>
 			  <button type="button" id = "login-submit" class="btn btn-default">Submit</button>
 			</form>
 		</div>
 	<div>
 </div>
+<script >
+$(document).ready(function(){
+$('#login-submit').on('click',function(){
+	var inputsValid = true;
+	$("input.required").each(function(index){
+		if($(this).val().length <= 0){
+			alert('Please fill out all forms that are highlighted');
+			inputsValid = false;
+			return false;
+		}
+	});
+	if (!inputsValid) return;
+	$.ajax({
+		type: "POST",
+		url: "/user/validate",
+		data: {
+			email: $('#InputEmail').val(),
+			pass: $('#InputPass').val()
+		},
+		success: function(data){
+			console.log('It succeeded');
+			location = "home"
+		},
+		error: function(data){
+			console.log("We didn't succeed");
+			console.dir(data);
+
+			$('input').each(function(){$(this).val('')});
+			$('label').each(function(){$(this).removeClass('label-info').addClass('label-danger')});
+			$('#warning').show();
+		}
+	});
+
+	console.log('Hello there')
+});
+});
+</script>
 </body>
 </html>

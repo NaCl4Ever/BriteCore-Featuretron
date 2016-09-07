@@ -13,6 +13,7 @@ var userSchema = new Schema({
 	,lastName: String
 	,requesterId: Number
 	,email : String
+	,pass : String
 });
 
 var mUser = mongoose.model('User', userSchema);
@@ -43,3 +44,20 @@ exports.returnAllUsers = function(){
 	});
 };
 
+exports.registerUser = function(user){
+	db.collection('users').insert(user, function(err, user){
+		if(err) return console.error(err);
+		console.log("User inserted correctly");
+	});
+};
+
+exports.validateUser = function(user, callback){
+	mUser.find({email: user.email, pass: user.pass}, function(err, user){
+		if(err) return console.error(err);
+		
+		if(user){ 
+			callback(true);
+		}
+		else {callback(false);}
+	});
+};

@@ -12,19 +12,19 @@
 		<div class = "central-box register col-xs-8 col-xs-offset-4 col-md-6 col-md-offset-3">
 			<form>
 			  <div class="form-group">
-			    <label for="InputEmail">Email address</label>
+			    <label class="label label-info" for="InputEmail">Email address</label>
 			    <input type="email" class="form-control  required" id="InputEmail" placeholder="Email">
 			  </div>
 			  <div class="form-group">
-			    <label for="InputPass">Password</label>
+			    <label class="label label-info" for="InputPass"> Password</label>
 			    <input type="password" class="form-control required" id="InputPass" placeholder="Password">
 			  </div>
 			  <div class="form-group">
-			    <label for="InputFirstName">First Name</label>
+			    <label class="label label-info" for="InputFirstName">First Name</label>
 			    <input type="text" class="form-control required" id="InputFirstName" placeholder="First Name">
 			  </div>
 			  <div class="form-group">
-			    <label for="InputLastName">Last Name</label>
+			    <label class="label label-info" for="InputLastName">Last Name</label>
 			    <input type="text"  class="form-control required"id="InputLastName" placeholder="Last Name">
 			  </div>
 			  <button type="button" id = "register-submit" class="btn btn-default">Submit</button>
@@ -45,20 +45,24 @@ $('#register-submit').on('click',function(){
 	});
 	if (!inputsValid) return;
 	$.ajax({
-		type: "GET",
+		type: "POST",
 		url: "/user/register",
 		data: {
-			email: $('#InputEmail'),
-			pass: $('#InputPass'),
-			first: $('#InputFirstName'),
-			last: $('#InputLastName')
+			email: $('#InputEmail').val(),
+			pass: $('#InputPass').val(),
+			first: $('#InputFirstName').val(),
+			last: $('#InputLastName').val()
 		},
 		dataType:'json',
 		success: function(data){
 			console.log('It succeeded');
+			console.dir(data);
+			location = "login";
 		},
 		error: function(data){
 			console.log("We didn't succeed");
+			console.dir(data);
+			location = "register";
 		}
 	});
 

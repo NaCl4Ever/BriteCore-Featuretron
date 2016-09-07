@@ -22,19 +22,9 @@ $(function(){
 	ko.applyBindings(viewModel);
 });
 
-$('#register-submit').on('click',function(){
-	console.log('You clicked submit register');
-	$("input.required").each(function(index){
-		if($(this).val().length <= 0){
-			console.log('It fired');
-			alert('Please fill out all forms that are highlighted');
-			return
-		}
-	});
 
-});
 // var user = null;
-// var locale = window.location.href;
+// var locale = location;
 // if(user !== null){
 // 	$.ajax({
 // 		url: "/user/" + user.id,
@@ -49,4 +39,4 @@ $('#register-submit').on('click',function(){
 
 // }
 // else
-// 	window.location.href = "login";
+// 	location = "login";
